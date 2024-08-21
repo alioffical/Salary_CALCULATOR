@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Simple Input Box Example";
+}
+
+<h2>Enter a Multiplier Value</h2>
+
+<div>
+    <input type="number" id="inputBox" placeholder="Enter a value" />
+    <button onclick="storeValue()">Calculate</button>
+</div>
+
+<div id="lastValueDiv"></div>
+<div id="result"></div>
+
+@section Scripts {
+    <script>
+        // Function to store the value and navigate to another page
+        function storeValue() {
+            var inputValue = parseInt(document.getElementById('inputBox').value) || 500; // Default to 500 if empty
+            localStorage.setItem('multiplier', inputValue); // Store the value in local storage
+            window.location.href = '@Url.Action("ChangeValue", "ChangeValueController")'; // Navigate to the second page
+        }
+
+        // Function to display the last entered value from local storage
+        function displayLastValue() {
+            var lastValue = localStorage.getItem('multiplier') || 'No value entered yet'; // Retrieve the last value or show a default message
+            document.getElementById('lastValueDiv').innerText = 'Last Entered Value: ' + lastValue;
+        }
+
+        // Call the function to display the last value when the page loads
+        $(document).ready(function () {
+            displayLastValue();
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @{
+    ViewBag.Title = "Simple Input Box Example";
+}
+
+<h2>Enter a Multiplier Value</h2>
+
+<div>
+    <input type="number" id="inputBox" placeholder="Enter a value" />
+    <button onclick="calculate()">Calculate</button>
+</div>
+<div id="result"></div>
+
+@section Scripts {
+    <script>
+        function storeValue() {
+            var inputValue = parseInt(document.getElementById('inputBox').value) || 500; // Default to 500 if empty
+            localStorage.setItem('multiplier', inputValue); // Store the value in local storage
+            window.location.href = '@Url.Action("ChangeValue", "ChangeValueController")'; // Navigate to the second page
+        }
+    </script>
+}
+ *@

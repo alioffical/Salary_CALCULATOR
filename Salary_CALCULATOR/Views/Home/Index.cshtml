@@ -1,0 +1,541 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <title>Fotan Salary Calculator</title>
+</head>
+<body class="mx-5">
+
+    <div class="row">
+        <div class="col-lg-12 px-5 text-center">
+            <h1> Fotan Salary Calculator</h1>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="postddl" class="mr-2" style="font-weight: bold;">POST:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="postDropdown" class="w-50 form-control" required>
+                        <option value="">Please Select</option>
+                        <option value="12">Principal Main Campus</option>
+                        <option value="8">Campus Monitor/Principal Sub-Campus</option>
+                        <option value="6">Kids Campus</option>
+                        <option value="4">Coordinator/Helper Campus Monitor</option>
+                        <option value="1">Teacher</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="postDropdownError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="classddl" style="font-weight: bold;">CLASS:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="classDropdown" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="2">P.G to 2</option>
+                        <option value="4">Class 3 - 4</option>
+                        <option value="6">Class 5 - 7</option>
+                        <option value="6">Class 8</option>
+                        <option value="2">Class 9-10</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="classDropdownError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="areaddl" class="mr-2" style="font-weight: bold;">AREA:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="areaddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="0">Local</option>
+                        <option value="1">Branch 1-2</option>
+                        <option value="2">Branch 1-3</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="areaddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="Genderddl" class="mr-2" style="font-weight: bold;">GENDER:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="genderddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="1">Male Single</option>
+                        <option value="1">Married Female Less Than 30 Years</option>
+                        <option value="2">Female Single</option>
+                        <option value="3">Male Married More Than 35 Years</option>
+                        <option value="3">Female Married More Than 30 Years</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="genderddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="Degreeddl" class="mr-2" style="font-weight: bold;">DEGREE:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="degreeddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="1">F.A</option>
+                        <option value="2">Fsc/B.A</option>
+                        <option value="3">DAE</option>
+                        <option value="4">M.A</option>
+                        <option value="5">B.Sc</option>
+                        <option value="7">M.Sc</option>
+                        <option value="8">MPhil</option>
+                        <option value="12">PHD</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="degreeddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="Lastegreeddl" class="mr-2" style="font-weight: bold;">LAST DEGREE REG/PRIVATE:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="lstdegreeddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="1">Private</option>
+                        <option value="3">Regular</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="lstdegreeddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="Freshlateddl" class="mr-2" style="font-weight: bold;">FRESH/LATE:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="frshlateddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="1">Fresh</option>
+                        <option value="2">Experience</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="frshlateddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="Contractddl" class="mr-2" style="font-weight: bold;">CONTRACT:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="contractddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="0">No</option>
+                        <option value="2">Yes</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="contractddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="Experienceddl" class="mr-2" style="font-weight: bold;">EXPERIENCE:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="experienceddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="1">No Experience</option>
+                        <option value="2">Home Academy Experience</option>
+                        <option value="4">School less than 1 Year</option>
+                        <option value="6">School 1 year to 2 Year</option>
+                        <option value="7">Different School More Than 2 Years</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="experienceddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="Lastschlddl" class="mr-2" style="font-weight: bold;">LAST SCHOOL:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="lastschoolddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="0">No School</option>
+                        <option value="4">A category</option>
+                        <option value="2">B category</option>
+                        <option value="1">C category</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="lastschoolddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="SubExpddl" class="mr-2" style="font-weight: bold;">EXPERIENCE IN SUBJECT:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="subjectexpddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="0">No experience</option>
+                        <option value="3">Experienced</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="subjectexpddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="personalityddl" class="mr-2" style="font-weight: bold;">PERSONALITY:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="Personalityddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="0">Below Well</option>
+                        <option value="2">Well Looking</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="PersonalityddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div for="Compskillddl" class="mr-2" style="font-weight: bold;">COMPUTER SKILL:</div>
+            <div class="d-flex">
+                <select asp-for="Post" id="Compskillsddl" class="w-50 form-control">
+                    <option value="">Please Select</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div>
+                <span id="CompskillsddlError" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="hijabtieddl" class="mr-2" style="font-weight: bold;">HIJAB/TIE:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="Hijabddl" class="w-50 form-control">
+                        <option value="">Please Select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="hijabtieddlError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div for="hafzddl" class="mr-2" style="font-weight: bold;" >HAFIZ:</div>
+                <div class="d-flex">
+                    <select asp-for="Post" id="hafzddl" class="w-50 form-control" required>
+                        <option value="">Please Select</option>
+                        <option value="0">No</option>
+                        <option value="2">Yes</option>
+                    </select>
+                </div>
+                <div>
+                    <span id="hafzddlError" class="text-danger"></span>
+                </div>
+              
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div>
+                <div>
+                    <label for="Adminsatisfaction" style="font-weight: bold;">Admin Satisfaction:</label>
+                    <input class="w-50 form-control" id="Adminsatisfaction" name="Adminsatisfaction" type="number" min="1" max="7" value="" required />
+                    <small id="adminSatisfactionError" class="form-text text-danger"></small>
+                    <span id="adminSatisfactionError" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-5">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-success" type="submit" name="Calculate" value="" id="btntotal" onclick="calculateTotal()">Calculate</button>
+        </div>
+    </div>
+
+    <div class="row my-5">
+        <div class="col-md-12 text-center">
+            <div id="resultDiv" style="margin-top: 20px; font-weight: bold; font-size:50px;"></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function validateAdminSatisfaction() {
+            var adminsatisfactionValue = parseInt($('#Adminsatisfaction').val());
+
+            if (isNaN(adminsatisfactionValue) || adminsatisfactionValue < 1 || adminsatisfactionValue > 7) {
+                $('#adminSatisfactionError').text('Enter a number between 1 and 7');
+                return false;
+            } else {
+                $('#adminSatisfactionError').text('');
+                return true;
+            }
+        }
+        function validateHafzddl() {
+            var hafzValue = $('#hafzddl').val();
+            if (hafzValue === "") {
+                $('#hafzddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#hafzddlError').text('');
+                return true;
+            }
+        }
+
+        function validateHijabddl() {
+            var hijabValue = $('#Hijabddl').val();
+            if (hijabValue === "") {
+                $('#hijabtieddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#hijabtieddlError').text('');
+                return true;
+            }
+        }
+
+        function validateCompskillsddl() {
+            var hijabValue = $('#Compskillsddl').val();
+            if (hijabValue === "") {
+                $('#CompskillsddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#CompskillsddlError').text('');
+                return true;
+            }
+        }
+        function validatePersonalityddl() {
+            var hijabValue = $('#Personalityddl').val();
+            if (hijabValue === "") {
+                $('#PersonalityddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#PersonalityddlError').text('');
+                return true;
+            }
+        }
+        function validatesubjectexpddl() {
+            var hijabValue = $('#subjectexpddl').val();
+            if (hijabValue === "") {
+                $('#subjectexpddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#subjectexpddlError').text('');
+                return true;
+            }
+        }
+        
+        function validatelastschoolddl() {
+            var lastschoolddl = $('#lastschoolddl').val();
+            if (lastschoolddl === "") {
+                $('#lastschoolddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#lastschoolddlError').text('');
+                return true;
+            }
+        }
+
+        function validateexperienceddl() {
+            var experienceddl = $('#experienceddl').val();
+            if (experienceddl === "") {
+                $('#experienceddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#experienceddlError').text('');
+                return true;
+            }
+        }
+
+        function validatecontractddll() {
+            var experienceddl = $('#contractddl').val();
+            if (experienceddl === "") {
+                $('#contractddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#contractddlError').text('');
+                return true;
+            }
+        }
+
+        function validatefrshlateddl() {
+            var experienceddl = $('#frshlateddl').val();
+            if (experienceddl === "") {
+                $('#frshlateddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#frshlateddlError').text('');
+                return true;
+            }
+        }
+        function validatelstdegreeddl() {
+            var experienceddl = $('#lstdegreeddl').val();
+            if (experienceddl === "") {
+                $('#lstdegreeddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#lstdegreeddlError').text('');
+                return true;
+            }
+        }
+
+        function validatedegreeddl() {
+            var experienceddl = $('#degreeddl').val();
+            if (experienceddl === "") {
+                $('#degreeddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#degreeddlError').text('');
+                return true;
+            }
+        }
+
+        function validategenderddl() {
+            var experienceddl = $('#genderddl').val();
+            if (experienceddl === "") {
+                $('#genderddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#genderddlError').text('');
+                return true;
+            }
+        }
+
+        function validateareaddl() {
+            var experienceddl = $('#areaddl').val();
+            if (experienceddl === "") {
+                $('#areaddlError').text('Please select an option.');
+                return false;
+            } else {
+                $('#areaddlError').text('');
+                return true;
+            }
+        }
+
+        function validateclassDropdown() {
+            var experienceddl = $('#classDropdown').val();
+            if (experienceddl === "") {
+                $('#classDropdownError').text('Please select an option.');
+                return false;
+            } else {
+                $('#classDropdownError').text('');
+                return true;
+            }
+        }
+
+        function validatepostDropdown() {
+            var experienceddl = $('#postDropdown').val();
+            if (experienceddl === "") {
+                $('#postDropdownError').text('Please select an option.');
+                return false;
+            } else {
+                $('#postDropdownError').text('');
+                return true;
+            }
+        }
+        function calculateTotal() {
+            var isHafzValid = validateHafzddl();
+            var isHijabValid = validateHijabddl();
+            var isCompskillsddl = validateCompskillsddl();
+            var isPersonalityddl = validatePersonalityddl();
+            var issubjectexpddl = validatesubjectexpddl();
+            var islastschoolddl = validatelastschoolddl();
+            var isexperienceddl = validateexperienceddl(); 
+            var iscontractddl = validatecontractddll();
+            var isfrshlateddl = validatefrshlateddl();
+            var islstdegreeddl = validatelstdegreeddl();
+            var isdegreeddl = validatedegreeddl();
+            var isgenderddl = validategenderddl();
+            var isareaddl = validateclassDropdown();
+            var isareaddl = validateareaddl();
+            var isvalidatepostDropdown = validatepostDropdown();
+
+            if (!validateAdminSatisfaction() || !validateHafzddl() || !validateHijabddl() || !validateCompskillsddl() || !validatePersonalityddl()
+                || !validatelastschoolddl() || !validateexperienceddl() || !validatecontractddll() || !validatefrshlateddl()|| !validatelstdegreeddl() 
+                || !validatedegreeddl() || !validategenderddl() || !validateareaddl() || !validateclassDropdown() || !validatepostDropdown()) {
+                return;
+            }
+            var postValue = parseInt($('#postDropdown').val()) || 0;
+            var classValue = parseInt($('#classDropdown').val()) || 0;
+            var AreaValue = parseInt($('#areaddl').val()) || 0;
+            var GenderValue = parseInt($('#genderddl').val()) || 0;
+            var DegreeValue= parseInt($('#degreeddl').val()) || 0;
+            var LastDegreeValue = parseInt($('#lstdegreeddl').val()) || 0;
+            var FreshLateValue = parseInt($('#frshlateddl').val()) || 0;
+            var ContractValue = parseInt($('#contractddl').val()) || 0;
+            var ExperienceValue = parseInt($('#experienceddl').val()) || 0;
+            var LastSchleValue = parseInt($('#lastschoolddl').val()) || 0;
+            var SubjectValue = parseInt($('#subjectexpddl').val()) || 0;
+            var PersonalityValue = parseInt($('#Personalityddl').val()) || 0;
+            var CompSkillValue = parseInt($('#Compskillsddl').val()) || 0;
+            var HijabTieValue = parseInt($('#hijabtieddl').val()) || 0;
+            var HafzValue = parseInt($('#hafzddl').val()) || 0;
+            var adminsatisfactionValue = parseInt($('#Adminsatisfaction').val()) || 0;
+            var total = postValue + classValue + AreaValue+GenderValue+DegreeValue+ LastDegreeValue+
+                FreshLateValue + ContractValue + ExperienceValue + LastSchleValue 
+                + SubjectValue + PersonalityValue + CompSkillValue + HijabTieValue + HafzValue + adminsatisfactionValue;
+            $('#resultDiv').text('Total Points: ' + total);
+
+            var multipliedResult = total * multiplier;
+            $('#multipliedResultDiv').text('Calculated Salary: ' + multipliedResult);
+        }
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
