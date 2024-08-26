@@ -1,88 +1,48 @@
-﻿@{
-    ViewBag.Title = "Simple Input Box Example";
-}
-
-<h2>Enter a Multiplier Value</h2>
-
-<div>
-    <input type="number" id="inputBox" placeholder="Enter a value" />
-    <button onclick="storeValue()">Calculate</button>
-</div>
-
-<div id="lastValueDiv"></div>
-<div id="result"></div>
-
-@section Scripts {
-    <script>
-        // Function to store the value and navigate to another page
-        function storeValue() {
-            var inputValue = parseInt(document.getElementById('inputBox').value) || 500; // Default to 500 if empty
-            localStorage.setItem('multiplier', inputValue); // Store the value in local storage
-            window.location.href = '@Url.Action("ChangeValue", "ChangeValueController")'; // Navigate to the second page
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Page</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
         }
 
-        // Function to display the last entered value from local storage
-        function displayLastValue() {
-            var lastValue = localStorage.getItem('multiplier') || 'No value entered yet'; // Retrieve the last value or show a default message
-            document.getElementById('lastValueDiv').innerText = 'Last Entered Value: ' + lastValue;
+        .container {
+            text-align: center;
         }
 
-        // Call the function to display the last value when the page loads
-        $(document).ready(function () {
-            displayLastValue();
-        });
-    </script>
-}
+        #multiplierInput {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
 
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <input type="text" id="multiplierInput" placeholder="Enter multiplier" />
+    <button onclick="storeValue()">Submit</button>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@* @{
-    ViewBag.Title = "Simple Input Box Example";
-}
-
-<h2>Enter a Multiplier Value</h2>
-
-<div>
-    <input type="number" id="inputBox" placeholder="Enter a value" />
-    <button onclick="calculate()">Calculate</button>
-</div>
-<div id="result"></div>
-
-@section Scripts {
     <script>
         function storeValue() {
-            var inputValue = parseInt(document.getElementById('inputBox').value) || 500; // Default to 500 if empty
-            localStorage.setItem('multiplier', inputValue); // Store the value in local storage
-            window.location.href = '@Url.Action("ChangeValue", "ChangeValueController")'; // Navigate to the second page
+            var multiplier = $('#multiplierInput').val();
+            sessionStorage.setItem('multiplierValue', multiplier);
+            // Redirect to the page where the calculation happens
+            window.location.href = '/Home/Index';
         }
     </script>
-}
- *@
+</body>
+</html>
